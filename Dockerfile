@@ -98,6 +98,9 @@ ENV HOSTNAME=0.0.0.0
 # Uncomment the following line in case you want to disable telemetry during the run time.
 # ENV NEXT_TELEMETRY_DISABLED=1
 
+# PARA APLICAÇÕES COM ASSETS
+# Copy production assets
+COPY --from=builder --chown=node:node /app/public ./public
 
 # Set the correct permission for prerender cache
 RUN mkdir .next
