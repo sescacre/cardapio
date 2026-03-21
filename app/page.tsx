@@ -1,13 +1,13 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import sescLogo from "@/public/Logotipo Sesc Branco.svg";
 
 export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
         <Image
-          className={styles.logo}
-          src="/next.svg"
+          src={ sescLogo }
           alt="Next.js logo"
           width={100}
           height={20}
@@ -43,8 +43,7 @@ export default function Home() {
             rel="noopener noreferrer"
           >
             <Image
-              className={styles.logo}
-              src="/vercel.svg"
+              src={ sescLogo }
               alt="Vercel logomark"
               width={16}
               height={16}
