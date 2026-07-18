@@ -1,0 +1,25 @@
+@keyframes fadeIn {
+    from { opacity: 0; translate: 0 1rem; }
+    to { opacity: 1; translate: 0 0; }
+}
+
+@keyframes leftIn {
+    from { opacity: 0; translate: 0 1rem; }
+    to { opacity: 1; translate: 0 0; }
+}
+
+:root {
+    --animation-fade-in: fadeIn ease-in;
+    --default-border: 1px solid var(--clr-neutral-80);
+
+    --space-sm: .5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+
+    --content-width: 1440px;
+}
+
+html,
+body{
+    height: 100%;
+}

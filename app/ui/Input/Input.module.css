@@ -1,0 +1,13 @@
+.input{
+    background-color: var(--clr-neutral-90);
+    border: none;
+    border-radius: .25rem;
+    box-sizing: border-box;
+    color: var(--clr-neutral-20);
+    font-family: inherit;
+    font-size: .875rem;
+    height: 2.5rem;
+    padding-inline: .75rem;
+
+    &.fillWidth{ width: 100%; }
+}

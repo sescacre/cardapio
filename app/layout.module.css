@@ -1,0 +1,18 @@
+body{
+    background-color: var(--clr-bg);
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+}
+
+.main{
+    align-content: start;
+    box-sizing: border-box;
+    display: grid;
+    gap: 1.5rem;
+    margin-inline: auto;
+    max-width: var(--content-width);
+    padding-block: 2rem;
+    padding-inline: 2rem;
+    width: 100%;
+}

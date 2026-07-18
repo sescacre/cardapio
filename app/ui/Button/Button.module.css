@@ -1,0 +1,77 @@
+@keyframes iconWiggle {
+    0%, 100% { rotate: 0deg; }
+    20% { rotate: -10deg; }
+    40% { rotate: 8deg; }
+    60% { rotate: -6deg; }
+    80% { rotate: 4deg; }
+}
+
+.button{
+    align-items: center;
+    background-color: var(--clr-neutral-20);
+    border: 2px solid var(--clr-neutral-20);
+    border-radius: .5rem;
+    box-sizing: border-box;
+    color: #FFF;
+    cursor: pointer;
+    display: flex;
+    font-family: inherit;
+    font-size: .875rem;
+    font-weight: 600;
+    gap: .5rem;
+    height: 2.5rem;
+    justify-content: center;
+    padding-inline: 1rem;
+    text-wrap: nowrap;
+    transition: .25s;
+    width: fit-content;
+
+    &.icon img{ filter: brightness(5); }
+
+    &.icon:is(:hover, :focus-visible):not(:disabled) img{
+        animation: iconWiggle .45s ease-in-out;
+    }
+
+    &:disabled{
+        cursor: not-allowed;
+        opacity: .6;
+    }
+
+    &.fillWidth{ width: 100%; }
+
+    &:is(:hover, :focus-visible):not(:disabled){
+        background-color: var(--clr-neutral-40);
+    }
+}
+
+.button.variant-secondary{
+    background-color: var(--clr-white);
+    color: var(--clr-neutral-20);
+
+    &.icon > img{ filter: brightness(0); }
+
+    &:is(:hover, :focus-visible):not(:disabled){
+        background-color: var(--clr-neutral-85);
+    }
+}
+
+.button.variant-text{
+    background-color: var(--clr-neutral-90);
+    border: none;
+    color: var(--clr-neutral-20);
+
+    &.icon > img{ filter: brightness(0); }
+
+    &:is(:hover, :focus-visible):not(:disabled){
+        background-color: var(--clr-neutral-80);
+    }
+}
+
+.button.size-sm{
+    height: 2rem;
+    font-size: .75rem;
+    gap: .25rem;
+    padding-inline: .75rem;
+
+    &.icon > img{ scale: .7; }
+}

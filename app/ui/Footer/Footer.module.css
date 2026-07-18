@@ -1,0 +1,10 @@
+.footer{
+    background-color: var(--clr-neutral-90);
+    display: flex;
+    justify-content: center;
+}
+
+.content{
+    max-width: 1200px;
+    padding-block: .5rem;
+}

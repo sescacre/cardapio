@@ -1,0 +1,10 @@
+.text {
+    &.size-sm { font-size: var(--fs-sm); }
+    &.size-df { font-size: var(--fs-df); }
+    &.size-md { font-size: var(--fs-md); }
+    &.size-lg { font-size: var(--fs-lg); }
+
+    &.weight-rg { font-weight: var(--fw-rg); }
+    &.weight-md { font-weight: var(--fw-md); }
+    &.weight-bd { font-weight: var(--fw-bd); }
+}

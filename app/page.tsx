@@ -1,65 +1,42 @@
-import Image from "next/image";
+import Text from "./ui/Text"
+import CategoryFormDialog from "./components/CategoryFormDialog";
+import CategoryFormFields from "./components/CategoryFormFields";
+import ItemFormDialog from "./components/ItemFormDialog";
+import ItemFormFields from "./components/ItemFormFields";
+import MenuCategoriesList from "./components/MenuCategoriesList";
+import MenuItemTable from "./components/MenuItemTable";
+import TvSettingsPanel from "./components/TvSettingsPanel";
+import Inline from "./ui/Flexbox/Inline";
 import styles from "./page.module.css";
-import sescLogo from "@/public/Logotipo Sesc Branco.svg";
+import Box from "./ui/Box";
 
-export default function Home() {
+export default function Page() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          src={ sescLogo }
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>Cardápio Digital Sesc Acre</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              src={ sescLogo }
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <Inline align="start" className={ styles.page } fillWidth gap="md">
+      <Box className={ styles.categories } fillBackground padding="lg">
+        <Inline justify="between">
+          <Text as="h2" size="lg">Categorias</Text>
+          
+          <CategoryFormDialog>
+            <CategoryFormFields />
+          </CategoryFormDialog>
+        </Inline>
+
+        <MenuCategoriesList />
+        <TvSettingsPanel />
+      </Box>
+
+      <Box fillBackground padding="lg">
+        <Inline justify="between">
+          <Text as="h2" size="lg">Cardápio Lanchonete</Text>
+
+          <ItemFormDialog>
+            <ItemFormFields />
+          </ItemFormDialog>
+        </Inline>
+
+        <MenuItemTable />
+      </Box>
+    </Inline>
   );
 }

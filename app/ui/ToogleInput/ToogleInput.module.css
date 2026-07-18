@@ -1,0 +1,41 @@
+.toogleInputLabel{
+    align-items: center;
+    background-color: var(--clr-neutral-90);
+    border-radius: .25rem;
+    color: var(--clr-neutral-20);
+    cursor: pointer;
+    display: flex;
+    font-size: var(--fs-df);
+    font-weight: var(--fw-md);
+    gap: .5rem;
+    justify-content: center;
+    padding-block: .5rem;
+    padding-inline: .75rem;
+    width: fit-content;
+
+    &:has(:checked){
+        background-color: var(--clr-neutral-20);
+        color: hsl(0, 0%, 100%);
+
+        .iconVisible{
+            display: block;
+            filter: brightness(0) invert(1);
+        }
+
+        .iconHidden{
+            display: none;
+        }
+    }
+
+    .iconVisible{
+        display: none;
+    }
+
+    .iconHidden{
+        display: block;
+    }
+
+    .toogleInput{
+        display: none;
+    }
+}

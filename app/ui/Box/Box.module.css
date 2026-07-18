@@ -1,0 +1,15 @@
+.box {
+    border: var(--default-border);
+    border-radius: 1rem;
+    box-sizing: border-box;
+    padding: var(--space-md);
+}
+
+.padding-sm { padding: var(--space-sm); }
+.padding-lg { padding: var(--space-lg); }
+
+.fillBackground { background-color: var(--clr-neutral-100); }
+
+.fitContent { width: fit-content; }
+
+.fillWidth { width: 100%; }

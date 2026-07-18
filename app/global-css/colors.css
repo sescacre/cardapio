@@ -1,0 +1,41 @@
+:root {
+    /* Neutras */
+    --clr-neutral-100: hsl(0 0% 100%);
+    --clr-neutral-95: hsl(220 12% 95%);
+    --clr-neutral-90: hsl(204 10% 90%);
+    --clr-neutral-80: hsl(210 10% 80%);
+    --clr-neutral-40: hsl(210 10% 40%);
+    --clr-neutral-30: hsl(212 10% 30%);
+    --clr-neutral-20: hsl(210 10% 20%);
+
+    /* Sesc */
+    --clr-sesc-yellow: hsl(46 100% 48%);
+    --clr-sesc-yellow-90: hsl(46 100% 90%);
+    --clr-sesc: hsl(210 100% 30%);
+    --clr-sesc-dark: hsl(210 100% 20%);
+    --clr-sesc-light: hsl(210 100% 40%);
+
+    /* Primárias */
+    --clr-primary: hsl(220 80% 40%);
+    --clr-primary-dark: hsl(220 80% 25%);
+    --clr-primary-light: hsl(220 80% 55%);
+
+    /* Programas */
+    --clr-assistencia: hsl(23 94% 57%);
+    --clr-cultura: hsl(356 76% 75%);
+    --clr-educacao: hsl(197 65% 56%);
+    --clr-lazer: hsl(5 80% 64%);
+    --clr-saude: hsl(274 39% 54%);
+
+    /* Semânticas */
+    --clr-bg: var(--clr-neutral-95);
+    --clr-bg-dark: hsl(210 20% 20%);
+    --clr-text: var(--clr-bg-dark);
+    --clr-text-light: hsl(209 20% 60%);
+    --clr-text-on-dark: var(--clr-neutral-100);
+    --clr-text-on-dark-muted: hsl(211 49% 80%);
+}
+
+body, body * {
+    color: var(--clr-text);
+}

@@ -1,0 +1,14 @@
+:root {
+    --fs-sm: .75rem;
+    --fs-df: .875rem;
+    --fs-md: 1rem;
+    --fs-lg: 1.25rem;
+
+    --fw-rg: 400;
+    --fw-md: 500;
+    --fw-bd: 700;
+}
+
+body, body * {
+    font-size: var(--fs-df);
+}

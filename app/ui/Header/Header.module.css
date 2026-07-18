@@ -1,0 +1,36 @@
+.header{
+    background-color: var(--clr-neutral-90);
+    border-top: 2px solid hsl(46, 100%, 48%);
+    display: flex;
+    justify-content: center;
+    
+    .content{
+        gap: 0;
+    }
+    
+    .SescContent{
+        background-color: var(--clr-neutral-100);
+        box-sizing: border-box;
+        height: 3rem;
+    }
+    
+    .navigation{
+        box-sizing: border-box;
+        max-width: var(--content-width);
+        padding-block: 1rem;
+        padding-inline: 2rem;
+    }
+
+    .navigationLinks a{
+        border-radius: .25rem;
+        box-sizing: border-box;
+        padding-inline: .5rem;
+        transition: background-color 0.2s ease-in-out,
+            scale 0.2s ease-in-out;
+        
+        &:hover{
+            background-color: var(--clr-neutral-80);
+            scale: 1.05;
+        }
+    }
+}
