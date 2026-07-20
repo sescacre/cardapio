@@ -9,6 +9,8 @@ import TvSettingsPanel from "./components/TvSettingsPanel";
 import Inline from "./ui/Flexbox/Inline";
 import styles from "./page.module.css";
 import Box from "./ui/Box";
+import Flexbox from "./ui/Flexbox";
+import OpenTvLink from "./components/OpenTvLink";
 
 export default function Page() {
   return (
@@ -30,9 +32,12 @@ export default function Page() {
         <Inline justify="between">
           <Text as="h2" size="lg">Cardápio Lanchonete</Text>
 
+<Inline>
+  <OpenTvLink />
           <ItemFormDialog>
             <ItemFormFields />
           </ItemFormDialog>
+</Inline>
         </Inline>
 
         <MenuItemTable />

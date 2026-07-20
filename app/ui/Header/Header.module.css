@@ -9,28 +9,45 @@
     }
     
     .SescContent{
-        background-color: var(--clr-neutral-100);
+        background-color: var(--clr-sesc);
         box-sizing: border-box;
-        height: 3rem;
+        padding-block: .5rem;
+
+        .SescLogo{
+            height: 1.5rem;
+            width: auto;
+        }
     }
     
     .navigation{
+        align-items: center;
         box-sizing: border-box;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
         max-width: var(--content-width);
         padding-block: 1rem;
         padding-inline: 2rem;
+        width: 100%;
+
+        a{ font-size: var(--fs-md); }
     }
 
-    .navigationLinks a{
-        border-radius: .25rem;
-        box-sizing: border-box;
-        padding-inline: .5rem;
-        transition: background-color 0.2s ease-in-out,
-            scale 0.2s ease-in-out;
-        
-        &:hover{
-            background-color: var(--clr-neutral-80);
-            scale: 1.05;
-        }
+    .title{
+        justify-self: start;
+    }
+
+    .navigationLinks{
+        justify-self: center;
+    }
+
+    .logout{
+        justify-self: end;
+    }
+    
+    .navigationLinks a:hover{
+        text-decoration: underline;
+        text-decoration-color: var(--clr-primary-light);
+        text-decoration-thickness: 2px;
+        text-underline-offset: .25rem;
     }
 }
