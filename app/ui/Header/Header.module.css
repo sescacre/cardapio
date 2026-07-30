@@ -1,6 +1,5 @@
 .header{
     background-color: var(--clr-neutral-90);
-    border-top: 2px solid hsl(46, 100%, 48%);
     display: flex;
     justify-content: center;
     
@@ -10,12 +9,16 @@
     
     .SescContent{
         background-color: var(--clr-sesc);
+        border-bottom: 2px solid hsl(46, 100%, 48%);
         box-sizing: border-box;
         padding-block: .5rem;
 
         .SescLogo{
             height: 1.5rem;
+            transition: scale 0.2s ease-in-out;
             width: auto;
+
+            &:hover{ scale: 1.1; }
         }
     }
     
@@ -42,6 +45,23 @@
 
     .logout{
         justify-self: end;
+    }
+
+    .logoutButton{
+        background: none;
+        border: none;
+        color: inherit;
+        cursor: pointer;
+        font: inherit;
+        font-size: var(--fs-md);
+        padding: 0;
+    }
+
+    .logoutButton:hover{
+        text-decoration: underline;
+        text-decoration-color: var(--clr-primary-light);
+        text-decoration-thickness: 2px;
+        text-underline-offset: .25rem;
     }
     
     .navigationLinks a:hover{

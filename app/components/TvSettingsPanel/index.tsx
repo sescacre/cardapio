@@ -12,7 +12,7 @@ import {
   TV_DURATION_MIN_SECONDS,
   getTvDurationMs,
   setTvDurationSeconds,
-} from '@/app/tv/tvConfig';
+} from '@/app/(auth)/tv/tvConfig';
 import styles from './TvSettingsPanel.module.css';
 
 export default function TvSettingsPanel() {

@@ -5,9 +5,9 @@ import { useActionState } from "react";
 import Stack from "@/app/ui/Flexbox/Stack";
 
 type ItemFormAction = (
-    previousState: { success: boolean; message: string } | null,
+    previousState: { success?: boolean; message?: string; error?: string } | null,
     formData: FormData
-) => Promise<{ success: boolean; message: string }>;
+) => Promise<{ success?: boolean; message?: string; error?: string } | null>;
 
 export default function ItemForm({
     action: formAction,
@@ -25,6 +25,7 @@ export default function ItemForm({
 
                 {isPending && <p>Salvando item...</p>}
                 {state?.success && <p>{state.message}</p>}
+                {state?.error && !isPending && <p>{state.error}</p>}
             </Stack>
         </Form>
     );

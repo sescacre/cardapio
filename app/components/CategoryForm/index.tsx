@@ -5,9 +5,9 @@ import { useActionState } from "react";
 import Stack from "@/app/ui/Flexbox/Stack";
 
 type CategoryFormAction = (
-    previousState: { success: boolean; message: string } | null,
+    previousState: { success?: boolean; message?: string; error?: string } | null,
     formData: FormData
-) => Promise<{ success: boolean; message: string }>;
+) => Promise<{ success?: boolean; message?: string; error?: string } | null>;
 
 export default function CategoryForm({
     action: formAction,
@@ -25,6 +25,7 @@ export default function CategoryForm({
 
                 {isPending && <p>Salvando categoria...</p>}
                 {state?.success && !isPending && <p>{state.message}</p>}
+                {state?.error && !isPending && <p>{state.error}</p>}
             </Stack>
         </Form>
     );

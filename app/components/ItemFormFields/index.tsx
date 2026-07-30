@@ -61,10 +61,8 @@ export default async function ItemFormFields({ item }: { item?: MenuItem }) {
                     <Input
                         fillWidth
                         id="comerciarioPrice"
+                        mask="currency"
                         name="comerciarioPrice"
-                        type="number"
-                        step="0.01"
-                        min="0"
                         required
                         defaultValue={ item?.comerciarioPrice }
                     />
@@ -75,10 +73,8 @@ export default async function ItemFormFields({ item }: { item?: MenuItem }) {
                     <Input
                         fillWidth
                         id="publicoPrice"
+                        mask="currency"
                         name="publicoPrice"
-                        type="number"
-                        step="0.01"
-                        min="0"
                         required
                         defaultValue={ item?.publicoPrice }
                     />

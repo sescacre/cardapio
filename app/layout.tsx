@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
-import '@/app/global-css/reset.css';
-import '@/app/global-css/typography.css';
-import '@/app/global-css/colors.css';
-import '@/app/global-css/layout.css';
-import { Plus_Jakarta_Sans } from 'next/font/google';
-import Header from "./ui/Header";
-import Footer from "./ui/Footer";
-import styles from './layout.module.css';
+import "@/app/global-css/reset.css";
+import "@/app/global-css/typography.css";
+import "@/app/global-css/colors.css";
+import "@/app/global-css/layout.css";
+import "@/app/layout.module.css";
+import { Plus_Jakarta_Sans } from "next/font/google";
 
 export const metadata: Metadata = {
   title: "Cardápio Digital • Sesc Acre",
@@ -24,12 +22,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-br" className={ plusJakartaSans.className }>
-      <body>
-          <Header />
-          <main className={ styles.main }>{ children }</main>
-          <Footer />
-      </body>
+    <html lang="pt-br" className={plusJakartaSans.className}>
+      <body>{children}</body>
     </html>
   );
 }

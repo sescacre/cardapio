@@ -1,0 +1,21 @@
+.page {
+    align-items: center;
+    display: grid;
+    gap: 1rem;
+    justify-items: center;
+    min-height: 50vh;
+    padding: 2rem;
+    text-align: center;
+}
+
+.page p {
+    color: var(--clr-text-light, #666);
+    max-width: 28rem;
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+}

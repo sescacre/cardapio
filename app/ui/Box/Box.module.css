@@ -1,6 +1,6 @@
 .box {
-    border: var(--default-border);
     border-radius: 1rem;
+    box-shadow: 0 5px 12px hsl(200 100% 20% / 0.15);
     box-sizing: border-box;
     padding: var(--space-md);
 }

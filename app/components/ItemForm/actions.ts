@@ -1,91 +1,125 @@
 'use server';
 
 import { createMenuItem, deleteMenuItem, getMenuItems, updateMenuItem } from "@/app/data/menuItem";
+import { toUserMessage } from "@/app/data/apiErrors";
+import { parseCurrency } from "@/app/lib/mask";
 import { revalidatePath } from "next/cache";
 
-export async function createMenuItemAction(previousState: any, formData: FormData){
+type ActionState = {
+    success?: boolean;
+    message?: string;
+    error?: string;
+} | null;
+
+export async function createMenuItemAction(
+    previousState: ActionState,
+    formData: FormData,
+): Promise<ActionState> {
     console.log('🔁 ACTION - CREATE MENU ITEM');
 
-    const categoryId = formData.get('categoryId') as string;
-    const comerciarioPrice = Number(formData.get('comerciarioPrice'));
-    const description = formData.get('description') as string;
-    const name = formData.get('name') as string;
-    const publicoPrice = Number(formData.get('publicoPrice'));
-    const visible = formData.get('visible') === 'on';
+    try {
+        const categoryId = formData.get('categoryId') as string;
+        const comerciarioPrice = parseCurrency(String(formData.get('comerciarioPrice') ?? ''));
+        const description = formData.get('description') as string;
+        const name = formData.get('name') as string;
+        const publicoPrice = parseCurrency(String(formData.get('publicoPrice') ?? ''));
+        const visible = formData.get('visible') === 'on';
 
-    await createMenuItem({
-        categoryId,
-        comerciarioPrice,
-        description: description || null,
-        name,
-        publicoPrice,
-        visible,
-    });
+        await createMenuItem({
+            categoryId,
+            comerciarioPrice,
+            description: description || null,
+            name,
+            publicoPrice,
+            visible,
+        });
 
-    revalidatePath('/');
-    revalidatePath('/tv');
+        revalidatePath('/');
+        revalidatePath('/painel');
+        revalidatePath('/tv');
 
-    return { success: true, message: 'Item criado com sucesso' };
+        return { success: true, message: 'Item criado com sucesso' };
+    } catch (error) {
+        return { error: toUserMessage(error) };
+    }
 }
 
-export async function updateMenuItemAction(previousState: any, formData: FormData){
+export async function updateMenuItemAction(
+    previousState: ActionState,
+    formData: FormData,
+): Promise<ActionState> {
     console.log('🔁 ACTION - UPDATE MENU ITEM');
 
-    const id = formData.get('id') as string;
-    const categoryId = formData.get('categoryId') as string;
-    const comerciarioPrice = Number(formData.get('comerciarioPrice'));
-    const description = formData.get('description') as string;
-    const name = formData.get('name') as string;
-    const publicoPrice = Number(formData.get('publicoPrice'));
-    const visible = formData.get('visible') === 'on';
+    try {
+        const id = formData.get('id') as string;
+        const categoryId = formData.get('categoryId') as string;
+        const comerciarioPrice = parseCurrency(String(formData.get('comerciarioPrice') ?? ''));
+        const description = formData.get('description') as string;
+        const name = formData.get('name') as string;
+        const publicoPrice = parseCurrency(String(formData.get('publicoPrice') ?? ''));
+        const visible = formData.get('visible') === 'on';
 
-    await updateMenuItem(id, {
-        categoryId,
-        comerciarioPrice,
-        description: description || null,
-        name,
-        publicoPrice,
-        visible,
-    });
+        await updateMenuItem(id, {
+            categoryId,
+            comerciarioPrice,
+            description: description || null,
+            name,
+            publicoPrice,
+            visible,
+        });
 
-    revalidatePath('/');
-    revalidatePath('/tv');
+        revalidatePath('/');
+        revalidatePath('/painel');
+        revalidatePath('/tv');
 
-    return { success: true, message: 'Item atualizado com sucesso' };
+        return { success: true, message: 'Item atualizado com sucesso' };
+    } catch (error) {
+        return { error: toUserMessage(error) };
+    }
 }
 
-export async function deleteMenuItemAction(formData: FormData){
+export async function deleteMenuItemAction(formData: FormData) {
     console.log('🔁 ACTION - DELETE MENU ITEM');
 
-    const id = formData.get('id') as string;
+    try {
+        const id = formData.get('id') as string;
 
-    await deleteMenuItem(id);
+        await deleteMenuItem(id);
 
-    revalidatePath('/');
-    revalidatePath('/tv');
+        revalidatePath('/');
+        revalidatePath('/painel');
+        revalidatePath('/tv');
+    } catch (error) {
+        throw new Error(toUserMessage(error));
+    }
 }
 
-export async function toggleMenuItemVisibilityAction(formData: FormData){
+export async function toggleMenuItemVisibilityAction(formData: FormData) {
     console.log('🔁 ACTION - TOGGLE MENU ITEM VISIBILITY');
 
-    const id = formData.get('id') as string;
-    const visible = formData.get('visible') === 'on';
-    const items = await getMenuItems();
-    const item = items.find((menuItem) => menuItem.id === id);
+    try {
+        const id = formData.get('id') as string;
+        const visible = formData.get('visible') === 'on';
+        const items = await getMenuItems();
+        const item = items.find((menuItem) => menuItem.id === id);
 
-    if (!item) {
-        throw new Error('Item não encontrado');
+        if (!item) {
+            throw new Error('Item não encontrado');
+        }
+
+        await updateMenuItem(id, {
+            categoryId: item.categoryId,
+            comerciarioPrice: Number(item.comerciarioPrice),
+            description: item.description,
+            name: item.name,
+            publicoPrice: Number(item.publicoPrice),
+            visible,
+        });
+
+        revalidatePath('/');
+        revalidatePath('/painel');
+        revalidatePath('/tv');
+    } catch (error) {
+        throw new Error(toUserMessage(error));
     }
-
-    await updateMenuItem(id, {
-        categoryId: item.categoryId,
-        comerciarioPrice: Number(item.comerciarioPrice),
-        description: item.description,
-        name: item.name,
-        publicoPrice: Number(item.publicoPrice),
-        visible,
-    });
-
-    revalidatePath('/');
-    revalidatePath('/tv');
 }

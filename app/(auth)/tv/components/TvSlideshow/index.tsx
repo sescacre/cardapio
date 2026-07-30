@@ -2,9 +2,9 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { valueToCurrency } from '@/app/utils/dataFormat';
-import { getTvPlaylistAction } from '@/app/tv/actions';
-import type { TvSlide } from '@/app/tv/buildTvPlaylist';
-import { getTvDurationMs, TV_POLL_INTERVAL_MS } from '@/app/tv/tvConfig';
+import { getTvPlaylistAction } from '@/app/(auth)/tv/actions';
+import type { TvSlide } from '@/app/(auth)/tv/buildTvPlaylist';
+import { getTvDurationMs, TV_POLL_INTERVAL_MS } from '@/app/(auth)/tv/tvConfig';
 import styles from './TvSlideshow.module.css';
 
 const ITEMS_PER_PAGE = 4;
