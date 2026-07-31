@@ -5,30 +5,21 @@ import styles from "./Header.module.css";
 import Image from "next/image";
 import sescLogo from "@/public/sesc_logo_80_branco.png";
 import Text from "../Text";
-import LogoutButton from "./LogoutButton";
-import { getMe, userHasModule } from "@/app/data/auth";
+import LogoutWrapper from "../LogoutWrapper";
+import { getMe } from "@/app/data/auth";
+import { Button } from "../Button";
 
 type HeaderProps = {
   variant?: "public" | "auth";
 };
 
-const AUTH_LINKS = [
-  { href: "/painel", name: "Controle", slug: "controle" },
-  { href: "/tv", name: "TV", slug: "tv" },
-] as const;
-
 export default async function Header({ variant = "public" }: HeaderProps) {
-  let moduleLinks: { href: string; name: string }[] = [];
+  let me: Awaited<ReturnType<typeof getMe>> | null = null;
 
-  if (variant === "auth") {
-    try {
-      const me = await getMe();
-      moduleLinks = AUTH_LINKS.filter((link) =>
-        userHasModule(me, link.slug),
-      ).map(({ href, name }) => ({ href, name }));
-    } catch {
-      moduleLinks = [];
-    }
+  try {
+    me = await getMe();
+  } catch {
+    me = null;
   }
 
   return (
@@ -55,27 +46,31 @@ export default async function Header({ variant = "public" }: HeaderProps) {
         </Inline>
 
         <nav className={styles.navigation}>
-          <Text as="h1" className={styles.title} size="lg" weight="md">
-            Cardápio Digital
-          </Text>
+          <Link href="/" title="Ir para a página inicial">
+            <Text as="h1" className={styles.title} size="lg" weight="md">
+              Cardápio Digital
+            </Text>
+          </Link>
 
           <Inline className={styles.navigationLinks}>
-            <Link href="/">Cardápio</Link>
             {variant === "auth" ? (
-              moduleLinks.map((link) => (
-                <Link href={link.href} key={link.href}>
-                  {link.name}
-                </Link>
-              ))
-            ) : (
-              <Link href="/login">Entrar</Link>
-            )}
+              <Link href="#">Painel de Controle</Link>
+            ) : null}
           </Inline>
 
-          {variant === "auth" ? (
-            <LogoutButton />
+          {me ? (
+            <div className={styles.sessionActions}>
+              <span className={styles.userBadge}>{me.name}</span>
+              <LogoutWrapper>
+                <Button size="sm" type="button" variant="text">
+                  Sair
+                </Button>
+              </LogoutWrapper>
+            </div>
           ) : (
-            <span className={styles.logout} aria-hidden />
+            <Link className={styles.logout} href="/login">
+              <Button size="sm" type="button">Entrar</Button>
+            </Link>
           )}
         </nav>
       </Stack>

@@ -1,73 +1,96 @@
 .header{
-    background-color: var(--clr-neutral-90);
+    background-color: var(--clr-neutral-100);
+    box-shadow: 0 5px 12px hsl(200 100% 20% / 0.15);
     display: flex;
     justify-content: center;
     
     .content{
         gap: 0;
     }
-    
-    .SescContent{
-        background-color: var(--clr-sesc);
-        border-bottom: 2px solid hsl(46, 100%, 48%);
-        box-sizing: border-box;
-        padding-block: .5rem;
+}
 
-        .SescLogo{
-            height: 1.5rem;
-            transition: scale 0.2s ease-in-out;
-            width: auto;
+.SescContent{
+    background-color: var(--clr-sesc);
+    border-bottom: 2px solid hsl(46, 100%, 48%);
+    box-sizing: border-box;
+    padding-block: .5rem;
 
-            &:hover{ scale: 1.1; }
-        }
-    }
+}
+
+.SescLogo{
+    height: 1.5rem;
+    transition: scale 0.2s ease-in-out;
+    width: auto;
+
+    &:hover{ scale: 1.1; }
+}
+
+.navigation{
+    align-items: center;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    max-width: var(--content-width);
+    padding-block: 1rem;
+    padding-inline: 2rem;
+    width: 100%;
     
-    .navigation{
-        align-items: center;
-        box-sizing: border-box;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        max-width: var(--content-width);
-        padding-block: 1rem;
-        padding-inline: 2rem;
+    a{ width: fit-content; }
+}
+
+.navigationLinks > a{
+    font-size: var(--fs-md);
+    position: relative;
+    text-decoration: none;
+    transition: scale 0.2s ease-in-out;
+
+    &::after{
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -2px;
         width: 100%;
-
-        a{ font-size: var(--fs-md); }
+        height: 2px;
+        background: var(--clr-primary, #000);
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.3s cubic-bezier(.86,.01,.56,1.05);
     }
 
-    .title{
-        justify-self: start;
+    &:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
     }
+    &:hover {
+        scale: 1.1;
+    }
+} 
 
-    .navigationLinks{
-        justify-self: center;
-    }
+.title{
+    justify-self: start;
+}
 
-    .logout{
-        justify-self: end;
-    }
+.navigationLinks{
+    justify-self: center;
+}
 
-    .logoutButton{
-        background: none;
-        border: none;
-        color: inherit;
-        cursor: pointer;
-        font: inherit;
-        font-size: var(--fs-md);
-        padding: 0;
-    }
+.logout{
+    justify-self: end;
+}
 
-    .logoutButton:hover{
-        text-decoration: underline;
-        text-decoration-color: var(--clr-primary-light);
-        text-decoration-thickness: 2px;
-        text-underline-offset: .25rem;
-    }
-    
-    .navigationLinks a:hover{
-        text-decoration: underline;
-        text-decoration-color: var(--clr-primary-light);
-        text-decoration-thickness: 2px;
-        text-underline-offset: .25rem;
-    }
+.sessionActions{
+    align-items: center;
+    display: inline-flex;
+    gap: 0.75rem;
+    justify-self: end;
+}
+
+.userBadge{
+    background: var(--clr-neutral-200, hsl(210 20% 94%));
+    border-radius: 999px;
+    color: var(--clr-text, inherit);
+    font-size: var(--fs-sm, 0.875rem);
+    font-weight: 600;
+    padding: 0.35rem 0.75rem;
+    white-space: nowrap;
 }
