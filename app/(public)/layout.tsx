@@ -9,7 +9,7 @@ export default function PublicLayout({
 }>) {
   return (
     <>
-      <Header variant="public" />
+      <Header />
       <main className={styles.main}>{children}</main>
       <Footer />
     </>

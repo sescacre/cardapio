@@ -9,11 +9,7 @@ import LogoutWrapper from "../LogoutWrapper";
 import { getMe } from "@/app/data/auth";
 import { Button } from "../Button";
 
-type HeaderProps = {
-  variant?: "public" | "auth";
-};
-
-export default async function Header({ variant = "public" }: HeaderProps) {
+export default async function Header() {
   let me: Awaited<ReturnType<typeof getMe>> | null = null;
 
   try {
@@ -53,8 +49,8 @@ export default async function Header({ variant = "public" }: HeaderProps) {
           </Link>
 
           <Inline className={styles.navigationLinks}>
-            {variant === "auth" ? (
-              <Link href="#">Painel de Controle</Link>
+            {me ? (
+              <Link href="/painel">Painel de Controle</Link>
             ) : null}
           </Inline>
 
@@ -62,7 +58,12 @@ export default async function Header({ variant = "public" }: HeaderProps) {
             <div className={styles.sessionActions}>
               <span className={styles.userBadge}>{me.name}</span>
               <LogoutWrapper>
-                <Button size="sm" type="button" variant="text">
+                <Button 
+                  icon="logout"
+                  size="sm" 
+                  type="button" 
+                  variant="text"
+                >
                   Sair
                 </Button>
               </LogoutWrapper>

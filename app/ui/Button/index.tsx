@@ -14,11 +14,12 @@ import openIcon from '@/public/icons/open_in_new.svg';
 import saveIcon from '@/public/icons/save.svg';
 import addIcon from '@/public/icons/add.svg';
 import tvIcon from '@/public/icons/tv.svg';
+import logoutIcon from '@/public/icons/logout.svg';
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
     children?: React.ReactNode;
     fillWidth?: true;
-    icon?: 'add' | 'close' | 'closePanel' | 'delete' | 'edit' | 'filter' | 'leftArrow' | 'open' | 'openPanel' | 'rightArrow' | 'save' | 'sync' | 'tv';
+    icon?: 'add' | 'close' | 'closePanel' | 'delete' | 'edit' | 'filter' | 'leftArrow' | 'logout' | 'open' | 'openPanel' | 'rightArrow' | 'save' | 'sync' | 'tv';
     iconPosition?: 'left' | 'right';
     size?: 'sm' | 'md';
     variant?: 'primary' | 'secondary' | 'text';
@@ -61,6 +62,8 @@ function buttonIcon({ icon }: { icon: ButtonProps['icon'] }) {
             return syncIcon;
         case 'leftArrow':
             return leftArrowIcon;
+        case 'logout':
+            return logoutIcon;
         case 'rightArrow':
             return rightArrowIcon;
         case 'filter':

@@ -9,7 +9,7 @@ export default function PainelLayout({
 }>) {
   return (
     <>
-      <Header variant="auth" />
+      <Header />
       <main className={styles.main}>{children}</main>
       <Footer />
     </>
