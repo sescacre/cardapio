@@ -4,7 +4,7 @@ import { ApiClientError, mapApiError } from "./apiErrors";
 const API_URL = process.env.API_CENTRAL_URL;
 const API_KEY = process.env.API_CENTRAL_KEY;
 export const CARDAPIO_CLIENT_ID = process.env.CARDAPIO_CLIENT_ID ?? "cardapio";
-export const SESSION_COOKIE = "sessionId";
+export const SESSION_COOKIE = "cardapio_sessionId";
 
 export async function centralFetch<T>(endpoint: string, init?: RequestInit) {
   console.log("CENTRAL FETCH", `${API_URL}${endpoint}`);
