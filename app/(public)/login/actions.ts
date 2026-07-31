@@ -34,7 +34,6 @@ export async function loginAction(
       httpOnly: true,
       sameSite: "lax",
       path: "/",
-      secure: process.env.NODE_ENV === "production",
       expires: new Date(result.expiresAt),
     });
   } catch (error) {

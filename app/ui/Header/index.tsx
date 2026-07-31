@@ -6,11 +6,16 @@ import Image from "next/image";
 import sescLogo from "@/public/sesc_logo_80_branco.png";
 import Text from "../Text";
 import LogoutButton from "./LogoutButton";
-import { getMe } from "@/app/data/auth";
+import { getMe, userHasModule } from "@/app/data/auth";
 
 type HeaderProps = {
   variant?: "public" | "auth";
 };
+
+const AUTH_LINKS = [
+  { href: "/painel", name: "Controle", slug: "controle" },
+  { href: "/tv", name: "TV", slug: "tv" },
+] as const;
 
 export default async function Header({ variant = "public" }: HeaderProps) {
   let moduleLinks: { href: string; name: string }[] = [];
@@ -18,10 +23,9 @@ export default async function Header({ variant = "public" }: HeaderProps) {
   if (variant === "auth") {
     try {
       const me = await getMe();
-      moduleLinks = me.modules.map((m) => ({
-        href: m.href,
-        name: m.name,
-      }));
+      moduleLinks = AUTH_LINKS.filter((link) =>
+        userHasModule(me, link.slug),
+      ).map(({ href, name }) => ({ href, name }));
     } catch {
       moduleLinks = [];
     }

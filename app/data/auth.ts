@@ -1,5 +1,5 @@
 import { CARDAPIO_CLIENT_ID, centralFetch } from "./apiClient";
-import { AuthModule, AuthUser, LoginResponse } from "./auth.type";
+import { AuthModule, LoginResponse } from "./auth.type";
 
 type ApiAuthModule = {
   id: string;
@@ -12,29 +12,24 @@ type ApiAuthModule = {
   appName: string;
 };
 
-type ApiAuthUser = Omit<AuthUser, "modules"> & {
+type ApiAuthUser = {
+  id: string;
+  name: string;
+  cpf: string;
+  isAdmin: boolean;
+  active: boolean;
   modules: ApiAuthModule[];
+  sessionId?: string;
+  expiresAt?: string;
 };
 
-function moduleIconSrc(iconKey?: string | null) {
-  if (!iconKey || !/^[a-z0-9_-]+$/i.test(iconKey)) return undefined;
-  return `/icons/${iconKey}.svg`;
-}
-
 function toAuthModules(modules: ApiAuthModule[]): AuthModule[] {
-  return modules
-    .filter((m) => Boolean(m.path))
-    .map((m) => ({
-      id: m.id,
-      name: m.name,
-      slug: m.slug,
-      href: m.path as string,
-      icon: moduleIconSrc(m.iconKey),
-      appId: m.appId,
-      appSlug: m.appSlug,
-      appName: m.appName,
-    }))
-    .sort((a, b) => a.name.localeCompare(b.name));
+  return modules.map((m) => ({
+    id: m.id,
+    name: m.name,
+    slug: m.slug,
+    appSlug: m.appSlug,
+  }));
 }
 
 export async function login(cpf: string, password: string) {

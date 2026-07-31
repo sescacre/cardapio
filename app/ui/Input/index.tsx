@@ -1,3 +1,5 @@
+"use client";
+
 import { applyMask, maskCurrency, type MaskType } from "@/app/lib/mask";
 import useMask from "./hooks/useMask";
 import styles from './Input.module.css';

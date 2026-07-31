@@ -2,11 +2,7 @@ export type AuthModule = {
   id: string;
   name: string;
   slug: string;
-  href: string;
-  icon?: string;
-  appId: string;
   appSlug: string;
-  appName: string;
 };
 
 export type AuthUser = {
