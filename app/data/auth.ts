@@ -18,6 +18,7 @@ type ApiAuthUser = {
   cpf: string;
   isAdmin: boolean;
   active: boolean;
+  photo?: string | null;
   modules: ApiAuthModule[];
   sessionId?: string;
   expiresAt?: string;

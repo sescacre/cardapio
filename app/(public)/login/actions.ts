@@ -1,6 +1,6 @@
 "use server";
 
-import { login, userHasAnyCardapioModule } from "@/app/data/auth";
+import { login } from "@/app/data/auth";
 import { SESSION_COOKIE } from "@/app/data/apiClient";
 import { isApiClientError, toUserMessage } from "@/app/data/apiErrors";
 import { cookies } from "next/headers";
@@ -21,13 +21,6 @@ export async function loginAction(
 
   try {
     const result = await login(cpf, password);
-
-    if (!userHasAnyCardapioModule(result.user)) {
-      return {
-        error:
-          "Sem permissão para módulos do Cardápio. Solicite acesso a um administrador.",
-      };
-    }
 
     const cookieStore = await cookies();
     cookieStore.set(SESSION_COOKIE, result.sessionId, {

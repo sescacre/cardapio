@@ -18,6 +18,7 @@ import logoutIcon from '@/public/icons/logout.svg';
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
     children?: React.ReactNode;
+    color?: 'primary' | 'neutral';
     fillWidth?: true;
     icon?: 'add' | 'close' | 'closePanel' | 'delete' | 'edit' | 'filter' | 'leftArrow' | 'logout' | 'open' | 'openPanel' | 'rightArrow' | 'save' | 'sync' | 'tv';
     iconPosition?: 'left' | 'right';
@@ -26,6 +27,7 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 function buttonClassName({
+    color,
     fillWidth,
     icon,
     iconPosition,
@@ -34,6 +36,7 @@ function buttonClassName({
 }: Omit<ButtonProps, 'children'>): string {
     return [
         styles.button,
+        styles[`color-${color}`],
         styles[`size-${size}`],
         styles[`variant-${variant}`],
         fillWidth ? styles.fillWidth : '',
@@ -79,6 +82,7 @@ function buttonIcon({ icon }: { icon: ButtonProps['icon'] }) {
 
 export function Button({ 
     children, 
+    color = 'neutral',
     fillWidth,
     icon,
     iconPosition = 'left',
@@ -86,7 +90,7 @@ export function Button({
     variant = 'primary',
     ...rest  
 }: ButtonProps) {
-    const className = buttonClassName({ fillWidth, icon, iconPosition, size, variant });
+    const className = buttonClassName({ color, fillWidth, icon, iconPosition, size, variant });
 
     return(
         <button className={className} {...rest}>

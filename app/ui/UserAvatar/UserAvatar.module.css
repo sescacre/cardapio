@@ -1,0 +1,25 @@
+.avatar {
+  align-items: center;
+  background-color: var(--clr-neutral-85);
+  border-radius: 0.5rem;
+  color: var(--clr-neutral-20);
+  display: flex;
+  flex-shrink: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  justify-content: center;
+  min-height: 2.5rem;
+  overflow: hidden;
+  width: 2.5rem;
+}
+
+.size-lg {
+  font-size: 1.25rem;
+  width: 4.5rem;
+}
+
+.img {
+  height: 100%;
+  object-position: top;
+  width: 100%;
+}
